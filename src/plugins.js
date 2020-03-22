@@ -1,1 +1,1 @@
-import 'terminal.css';
+// Noop
