@@ -1,10 +1,12 @@
 const path = require('path');
 const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
+const publicPath = process.env.NODE_ENV === 'production'
+  ? '/www.bell-towne.com/'
+  : '/';
+
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/www.bell-towne.com/'
-    : '/',
+  publicPath,
   configureWebpack: {
     plugins: [
       new PrerenderSpaPlugin({
