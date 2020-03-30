@@ -1,17 +1,36 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="row">
+      <div
+        class="col-xs-12 col-sm-4"
+      >
+        <ResponsiveImage :src="myFace" />
+      </div>
+      <div
+        class="col-xs-12 col-sm-8"
+      >
+        <!-- <h2>Hello World</h2> -->
+        <h2>My name is Alexander Bell-Towne.</h2>
+        <p>I work as a Software Engineer at Square, Inc.</p>
+        <p>I have a B.S. in Informatics from the University of Washington.</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '../components/HelloWorld';
+import ResponsiveImage from '../components/ResponsiveImage';
+import myFace from '../assets/my-face.jpg';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    ResponsiveImage,
+  },
+  data() {
+    return {
+      myFace,
+    };
   },
 };
 </script>
