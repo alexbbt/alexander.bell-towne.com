@@ -4,7 +4,7 @@
     class="page terminal"
   >
     <Header />
-    <router-view />
+    <router-view class="page-content" />
     <Footer />
   </div>
 </template>
@@ -53,17 +53,26 @@ export default {
   }
 }
 
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  box-sizing: content-box;
+  max-width: 800px;
+  padding: 0 25px;
+  margin: auto;
+
+}
+
+.page-content {
+  flex: 1;
+}
+
 .grid {
   display: grid;
   grid-gap: 1em;
   grid-template-rows: auto;
   grid-template-columns: repeat( auto-fit, minmax(calc(var(--page-width) / 12), 1fr) );
-}
-
-.page {
-  box-sizing: content-box;
-  max-width: 800px;
-  padding: 0 25px;
-  margin: auto;
 }
 </style>
