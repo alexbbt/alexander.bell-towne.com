@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import ResponsiveImage from '../components/ResponsiveImage';
+import ResponsiveImage from '../components/ResponsiveImage.vue';
 import myFace from '../assets/my-face.jpg';
 
 export default {

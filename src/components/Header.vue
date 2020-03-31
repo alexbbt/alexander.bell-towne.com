@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import TerminalInput from './TerminalInput';
+import TerminalInput from './TerminalInput.vue';
 
 export default {
   name: 'Header',

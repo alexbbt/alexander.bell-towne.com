@@ -1,56 +1,43 @@
-import { HELP, FILES } from './constants';
+import { FILES } from './constants';
 
 import FACE from '../files/face.png';
 import EXPERIENCE from '../files/experience.md';
 import EDUCATION from '../files/education.md';
 
+import HistoryManager from './HistoryManager';
+import OutputManager from './OutputManager';
+import Executor from './Executor';
+import { parse } from './Parser';
+
 class Shell {
+  private history: HistoryManager;
+
+  private output: OutputManager;
+
+  private executor: Executor;
+
   constructor() {
-    this.output = [];
-    this.history = [];
-    this.index = -1;
-    this.previousCode = 0;
+    this.history = new HistoryManager();
+    this.output = new OutputManager();
+    this.executor = new Executor(this.output);
   }
 
   previous() {
-    return this.getAtIndex(this.index + 1);
+    return this.history.previous();
   }
 
   next() {
-    return this.getAtIndex(this.index - 1);
+    return this.history.next();
   }
 
-  getAtIndex(index) {
-    if (index >= 0) {
-      this.index = index;
-      return this.history[index];
-    }
-    return null;
-  }
+  run(input: string) {
+    this.history.add(input);
 
-  run(command, ...args) {
-    this.index = -1;
-    if (command !== '' && command != null) {
-      this.history.unshift([command, ...args]);
-    }
-    const success = this.process(command, ...args);
-    let prefix = '>';
-    if (success > 0) {
-      prefix = prefix.fontcolor('red');
-    } else {
-      prefix = prefix.fontcolor('green');
-    }
+    const { command, args } = parse(input);
 
-    // Return -1 to not print command.
-    if (success >= 0) {
-      const output = [command, ...args].join(' ');
-      this.output.unshift(`${prefix} ${output}`);
-      this.previousCode = success;
-    } else {
-      this.previousCode = 0;
-    }
+    this.executor.execute(command, args);
 
-    return this.output;
+    return this.output.getOutput();
   }
 
   process(command, ...args) {
@@ -68,27 +55,6 @@ class Shell {
       default:
         return this.help(command);
     }
-  }
-
-  print(stuff) {
-    let output = stuff;
-
-    output = output.split('\n').join('<br>');
-    output = output.split(' ').join('&nbsp;');
-
-    this.output.unshift(output);
-    return 0;
-  }
-
-  help(command) {
-    this.print(HELP);
-
-    if (command !== 'help') {
-      this.print(`Command '${command}' not recognized`);
-      return 1;
-    }
-
-    return 0;
   }
 
   echo(args) {
