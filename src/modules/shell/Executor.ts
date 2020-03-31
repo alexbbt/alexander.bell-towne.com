@@ -37,9 +37,7 @@ class Executor {
       this.output.add(output);
 
       action.route = route;
-    }
-
-    if (command === '') {
+    } else if (command === '') {
       this.output.add('');
     } else {
       const { output } = new Help().run();

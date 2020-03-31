@@ -1,13 +1,13 @@
-import List from './List';
-import Help from './Help';
-import Echo from './Echo';
 import Cat from './Cat';
+import Echo from './Echo';
+import Help from './Help';
+import List from './List';
 
 const Commands: Command[] = [
-  new List(),
-  new Help(),
-  new Echo(),
   new Cat(),
+  new Echo(),
+  new Help(),
+  new List(),
 ];
 
 export default Commands;
