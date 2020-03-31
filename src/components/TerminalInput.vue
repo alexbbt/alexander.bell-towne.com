@@ -3,10 +3,11 @@
     <div class="logo">
       <input
         ref="input"
-        v-model="input"
+        :value="input"
         class="input"
         autocomplete="false"
         spellcheck="false"
+        @input="updateInput($event.target.value)"
         @keyup="keyup"
       >
     </div>
@@ -14,16 +15,15 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-import { COMMAND_INPUT, COMMAND_PREVIOUS, COMMAND_NEXT } from '../store/index';
+import { mapActions, mapGetters } from 'vuex';
+import { COMMAND_INPUT, GET_INPUT, SET_INPUT } from '../store/index';
 
 export default {
   name: 'TerminalInput',
-  data() {
-    return {
-      input: '',
-      currentInput: '',
-    };
+  computed: {
+    ...mapGetters({
+      input: GET_INPUT,
+    }),
   },
   mounted() {
     const { input } = this.$refs;
@@ -47,38 +47,14 @@ export default {
   methods: {
     ...mapActions({
       sendInput: COMMAND_INPUT,
-      previous: COMMAND_PREVIOUS,
-      next: COMMAND_NEXT,
+      updateInput: SET_INPUT,
     }),
     keyup(event) {
-      switch (event.key) {
-        case 'Enter':
-          this.enter();
-          break;
-        case 'ArrowUp':
-          this.arrow(true);
-          break;
-        case 'ArrowDown':
-          this.arrow(false);
-          break;
-        default:
-          this.currentInput = this.input;
-          /* no op */
-      }
-    },
-    enter() {
-      this.sendInput(this.input);
-      this.input = '';
-      if (this.$route.name !== 'Terminal') {
-        this.$router.push('terminal');
-      }
-    },
-    async arrow(up = true) {
-      const command = await (up ? this.previous() : this.next());
-      if (command == null) {
-        this.input = this.currentInput;
-      } else {
-        this.input = command;
+      this.sendInput(event.key);
+      if (event.key === 'Enter') {
+        if (this.$route.name !== 'Terminal') {
+          this.$router.push('terminal');
+        }
       }
     },
   },

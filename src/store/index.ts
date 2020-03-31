@@ -8,40 +8,55 @@ Vue.use(Vuex);
 const shell = new Shell();
 
 export const COMMAND_INPUT = 'COMMAND_INPUT';
-export const COMMAND_PREVIOUS = 'COMMAND_PREVIOUS';
-export const COMMAND_NEXT = 'COMMAND_NEXT';
 
 export const GET_OUTPUT = 'GET_OUTPUT';
 export const SET_OUTPUT = 'SET_OUTPUT';
 
-export const GET_COMMAND = 'GET_COMMAND';
-export const SET_COMMAND = 'SET_COMMAND';
+export const GET_INPUT = 'GET_INPUT';
+export const SET_INPUT = 'SET_INPUT';
 
 export default new Vuex.Store({
   state: {
     output: [],
+    input: '',
   },
   getters: {
     [GET_OUTPUT](state) {
       return state.output;
+    },
+    [GET_INPUT](state) {
+      return state.input;
     },
   },
   mutations: {
     [SET_OUTPUT](state, output) {
       state.output = output;
     },
+    [SET_INPUT](state, input) {
+      state.input = input;
+    },
   },
   actions: {
-    [COMMAND_INPUT]({ commit }, input) {
-      const output = shell.run(input);
+    [SET_INPUT]({ commit }, input) {
+      commit(SET_INPUT, input);
+    },
+    [COMMAND_INPUT]({ commit, state }, key) {
+      if (key === 'Enter') {
+        commit(SET_OUTPUT, shell.run(state.input));
+        commit(SET_INPUT, '');
+      } else if (key === 'ArrowUp') {
+        const input = shell.previous(state.input);
+        console.log('up', input);
+        if (input != null) {
+          commit(SET_INPUT, input);
+        }
+      } else if (key === 'ArrowDown') {
+        const input = shell.next(state.input);
 
-      commit(SET_OUTPUT, output);
-    },
-    [COMMAND_PREVIOUS]() {
-      return shell.previous();
-    },
-    [COMMAND_NEXT]() {
-      return shell.next();
+        if (input != null) {
+          commit(SET_INPUT, input);
+        }
+      }
     },
   },
 });

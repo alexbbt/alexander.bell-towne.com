@@ -17,12 +17,12 @@ class Shell {
     this.executor = new Executor(this.output);
   }
 
-  previous() {
-    return this.history.previous();
+  previous(input: string): string | null {
+    return this.history.previous(input);
   }
 
-  next() {
-    return this.history.next();
+  next(input: string): string | null {
+    return this.history.next(input);
   }
 
   run(input: string) {
