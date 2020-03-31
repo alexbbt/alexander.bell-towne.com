@@ -17,22 +17,50 @@ class Shell {
     this.executor = new Executor(this.output);
   }
 
-  previous(input: string): string | null {
+  private previous(input: string): string | null {
     return this.history.previous(input);
   }
 
-  next(input: string): string | null {
+  private next(input: string): string | null {
     return this.history.next(input);
   }
 
-  run(input: string) {
+  keyup(key: string, input: string): ShellAction {
+    if (key === 'Enter') {
+      return this.run(input);
+    }
+
+    if (key === 'ArrowUp') {
+      return {
+        input: this.previous(input),
+      };
+    }
+
+    if (key === 'ArrowDown') {
+      return {
+        input: this.next(input),
+      };
+    }
+
+    return {};
+  }
+
+  run(input: string): ShellAction {
     this.history.add(input);
 
     const { command, args } = parse(input);
 
-    this.executor.execute(command, args);
+    const action = this.executor.execute(command, args);
 
-    return this.output.getOutput();
+    if (action.input == null) {
+      action.input = '';
+    }
+
+    if (action.route == null) {
+      action.route = 'terminal';
+    }
+
+    return action;
   }
 }
 

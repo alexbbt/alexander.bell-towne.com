@@ -7,12 +7,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home,
   },
   {
     path: '/terminal',
-    name: 'Terminal',
+    name: 'terminal',
     // route level code-splitting
     // this generates a separate chunk (terminal.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 const shell = new Shell();
 
-export const COMMAND_INPUT = 'COMMAND_INPUT';
+export const SHELL_KEYUP = 'SHELL_KEYUP';
 
 export const GET_OUTPUT = 'GET_OUTPUT';
 export const SET_OUTPUT = 'SET_OUTPUT';
@@ -40,23 +40,15 @@ export default new Vuex.Store({
     [SET_INPUT]({ commit }, input) {
       commit(SET_INPUT, input);
     },
-    [COMMAND_INPUT]({ commit, state }, key) {
-      if (key === 'Enter') {
-        commit(SET_OUTPUT, shell.run(state.input));
-        commit(SET_INPUT, '');
-      } else if (key === 'ArrowUp') {
-        const input = shell.previous(state.input);
-        console.log('up', input);
-        if (input != null) {
-          commit(SET_INPUT, input);
-        }
-      } else if (key === 'ArrowDown') {
-        const input = shell.next(state.input);
-
-        if (input != null) {
-          commit(SET_INPUT, input);
-        }
+    [SHELL_KEYUP]({ commit, state }, key) {
+      const { output, input, route } = shell.keyup(key, state.input);
+      if (output != null) {
+        commit(SET_OUTPUT, output);
       }
+      if (input != null) {
+        commit(SET_INPUT, input);
+      }
+      return route;
     },
   },
 });

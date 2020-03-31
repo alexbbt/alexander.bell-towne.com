@@ -16,7 +16,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import { COMMAND_INPUT, GET_INPUT, SET_INPUT } from '../store/index';
+import { SHELL_KEYUP, GET_INPUT, SET_INPUT } from '../store/index';
 
 export default {
   name: 'TerminalInput',
@@ -46,14 +46,15 @@ export default {
   },
   methods: {
     ...mapActions({
-      sendInput: COMMAND_INPUT,
+      shellKeyup: SHELL_KEYUP,
       updateInput: SET_INPUT,
     }),
-    keyup(event) {
-      this.sendInput(event.key);
-      if (event.key === 'Enter') {
-        if (this.$route.name !== 'Terminal') {
-          this.$router.push('terminal');
+    async keyup(event) {
+      const route = await this.shellKeyup(event.key);
+
+      if (route) {
+        if (this.$route.name !== route) {
+          this.$router.push({ name: route });
         }
       }
     },
