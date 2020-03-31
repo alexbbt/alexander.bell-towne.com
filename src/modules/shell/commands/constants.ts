@@ -7,8 +7,10 @@ Commands:
   ls          list the files in the current directory
   cat         print out the contents of a file
   clear       clear the output screen
-  help        print this message.
   echo        print out a message.
+  home        return to the home screen.
+
+  help        print this message.
 `;
 
 export const FILES = [
