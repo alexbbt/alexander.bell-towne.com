@@ -1,11 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import Shell from '../modules/shell';
+
 Vue.use(Vuex);
 
-const COMMAND_INPUT = 'COMMAND_INPUT';
-const GET_OUTPUT = 'GET_OUTPUT';
-const SET_OUTPUT = 'SET_OUTPUT';
+const shell = new Shell();
+
+export const COMMAND_INPUT = 'COMMAND_INPUT';
+
+export const GET_OUTPUT = 'GET_OUTPUT';
+export const SET_OUTPUT = 'SET_OUTPUT';
 
 export default new Vuex.Store({
   state: {
@@ -23,8 +28,9 @@ export default new Vuex.Store({
   },
   actions: {
     [COMMAND_INPUT]({ commit }, input) {
-      console.log(input);
-      commit(SET_OUTPUT, []);
+      const output = shell.run(...input.split(' '));
+
+      commit(SET_OUTPUT, output);
     },
   },
 });
