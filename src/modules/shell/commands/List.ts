@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-import { FILES } from '../constants';
+import { FILES } from './constants';
 
 class List implements Command {
   alias = [

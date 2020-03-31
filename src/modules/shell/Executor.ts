@@ -29,7 +29,7 @@ class Executor {
       this.output.add('');
     } else {
       const { output } = new Help().run();
-      this.lastStatus = -1;
+      this.lastStatus = 1;
       this.output.add(output);
       this.output.add(`Command '${command}' not recognized`);
     }

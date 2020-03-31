@@ -78,7 +78,7 @@ export default {
       if (command == null) {
         this.input = this.currentInput;
       } else {
-        this.input = command.join(' ');
+        this.input = command;
       }
     },
   },

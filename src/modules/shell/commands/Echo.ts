@@ -1,21 +1,19 @@
 /* eslint-disable class-methods-use-this */
-import { HELP } from './constants';
-
-class Help implements Command {
+class Echo implements Command {
   alias = [
-    'help',
+    'echo',
   ];
 
   matches(command: string): boolean {
     return this.alias.includes(command);
   }
 
-  run(): CommandOutput {
+  run(args: string[]): CommandOutput {
     return {
       status: 0,
-      output: HELP,
+      output: args.join(' '),
     };
   }
 }
 
-export default Help;
+export default Echo;
