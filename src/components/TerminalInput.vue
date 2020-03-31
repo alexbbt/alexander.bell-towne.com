@@ -51,7 +51,6 @@ export default {
       next: COMMAND_NEXT,
     }),
     keyup(event) {
-      this.currentInput = this.input;
       switch (event.key) {
         case 'Enter':
           this.enter();
@@ -63,6 +62,7 @@ export default {
           this.arrow(false);
           break;
         default:
+          this.currentInput = this.input;
           /* no op */
       }
     },

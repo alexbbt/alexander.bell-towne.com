@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import Shell from '../modules/shell';
+import { combineWhiteSpace } from '../utils';
 
 Vue.use(Vuex);
 
@@ -33,7 +34,7 @@ export default new Vuex.Store({
   },
   actions: {
     [COMMAND_INPUT]({ commit }, input) {
-      const output = shell.run(...input.split(' '));
+      const output = shell.run(...combineWhiteSpace(input).split(' '));
 
       commit(SET_OUTPUT, output);
     },
