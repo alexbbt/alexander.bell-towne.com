@@ -8,10 +8,31 @@ class Shell {
   constructor() {
     this.output = [];
     this.history = [];
+    this.index = -1;
+    this.previousCode = 0;
+  }
+
+  previous() {
+    return this.getAtIndex(this.index + 1);
+  }
+
+  next() {
+    return this.getAtIndex(this.index - 1);
+  }
+
+  getAtIndex(index) {
+    if (index >= 0) {
+      this.index = index;
+      return this.history[index];
+    }
+    return null;
   }
 
   run(command, ...args) {
-    this.history.push([command, ...args]);
+    this.index = -1;
+    if (command !== '' && command != null) {
+      this.history.unshift([command, ...args]);
+    }
     const success = this.process(command, ...args);
     let prefix = '>';
     if (success > 0) {
@@ -24,6 +45,9 @@ class Shell {
     if (success >= 0) {
       const output = [command, ...args].join(' ');
       this.output.unshift(`${prefix} ${output}`);
+      this.previousCode = success;
+    } else {
+      this.previousCode = 0;
     }
 
     return this.output;
@@ -39,6 +63,8 @@ class Shell {
         return this.ls(args);
       case 'cat':
         return this.cat(args);
+      case '':
+        return this.previousCode;
       default:
         return this.help(command);
     }
@@ -91,6 +117,11 @@ class Shell {
       case 'education.md':
         this.print(EDUCATION);
         return 0;
+      case '':
+      case null:
+      case undefined:
+        this.print('cat: must have an argument');
+        return 1;
       default:
         this.print(`cat: ${args[0]}: No such file or directory`);
         return 1;
@@ -103,6 +134,5 @@ export default Shell;
 /**
  * ideas:
  * * pipe
- * * history
  * * tabs
  */

@@ -15,13 +15,14 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { COMMAND_INPUT } from '../store/index';
+import { COMMAND_INPUT, COMMAND_PREVIOUS, COMMAND_NEXT } from '../store/index';
 
 export default {
   name: 'TerminalInput',
   data() {
     return {
       input: '',
+      currentInput: '',
     };
   },
   mounted() {
@@ -32,9 +33,6 @@ export default {
       if (event.metaKey || event.ctrlKey) {
         return;
       }
-      // if (event.keyCode < 46 || event.keyCode > 90) {
-      //   return;
-      // }
 
       if (event.target !== input) {
         input.focus();
@@ -49,11 +47,20 @@ export default {
   methods: {
     ...mapActions({
       sendInput: COMMAND_INPUT,
+      previous: COMMAND_PREVIOUS,
+      next: COMMAND_NEXT,
     }),
     keyup(event) {
-      switch (event.keyCode) {
-        case 13:
+      this.currentInput = this.input;
+      switch (event.key) {
+        case 'Enter':
           this.enter();
+          break;
+        case 'ArrowUp':
+          this.arrow(true);
+          break;
+        case 'ArrowDown':
+          this.arrow(false);
           break;
         default:
           /* no op */
@@ -64,6 +71,14 @@ export default {
       this.input = '';
       if (this.$route.name !== 'Terminal') {
         this.$router.push('terminal');
+      }
+    },
+    async arrow(up = true) {
+      const command = await (up ? this.previous() : this.next());
+      if (command == null) {
+        this.input = this.currentInput;
+      } else {
+        this.input = command.join(' ');
       }
     },
   },
