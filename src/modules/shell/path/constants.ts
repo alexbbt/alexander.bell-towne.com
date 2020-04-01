@@ -1,15 +1,15 @@
-export const HELP = `
-Usage: www.bell-towne.com [command] [options]
+export const HELP = `Usage: www.bell-towne.com [command] [options]
 
 An interactive resume website.
 
 Commands:
-  ls          list the files in the current directory
-  sh          execute a file
-  cat         print out the contents of a file
-  clear       clear the output screen
+  cat         print out the contents of a file.
+  clear       clear the output screen.
   echo        print out a message.
   home        return to the home screen.
+  ls          list the files in the current directory.
+  md          render the input as markdown.
+  sh          execute a file.
 
   help        print this message.
 `;

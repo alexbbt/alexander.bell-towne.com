@@ -7,4 +7,5 @@ interface CommandOutput {
 interface Command {
   matches(command: string): boolean;
   run(args: string[]): CommandOutput;
+  help(args: string[]): CommandOutput;
 }

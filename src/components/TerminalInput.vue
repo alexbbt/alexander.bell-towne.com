@@ -75,7 +75,12 @@ export default {
   }
 }
 
+.logo {
+  flex: 1;
+}
+
 .input {
+  width: 100%;
   border: none;
   font-size: var(--global-font-size);
   line-height: var(--global-line-height);

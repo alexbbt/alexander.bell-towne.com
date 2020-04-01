@@ -10,6 +10,10 @@ class Help implements Command {
     return this.alias.includes(command);
   }
 
+  help(): CommandOutput {
+    return this.run();
+  }
+
   run(): CommandOutput {
     return {
       status: 0,

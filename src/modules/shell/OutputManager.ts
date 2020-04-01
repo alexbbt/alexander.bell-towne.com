@@ -21,10 +21,17 @@ class OutputManager {
   add(line: string) {
     let output = line;
 
-    if (!output.includes('<')) {
+    if (output.startsWith('RAW_HTML')) {
+      output = output.substring('RAW_HTML'.length);
+    } else {
       // only if it is not already html.
-      output = output.split('\n').join('<br>');
-      output = output.split(' ').join('&nbsp;');
+      output = String(output)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/\n/g, '<br>')
+        .replace(/ /g, '&nbsp;');
     }
 
     this.output.push(output);

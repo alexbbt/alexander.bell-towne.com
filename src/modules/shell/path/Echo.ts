@@ -1,4 +1,7 @@
 /* eslint-disable class-methods-use-this */
+
+const HELP = 'Usage: echo [string ...]';
+
 class Echo implements Command {
   alias = [
     'echo',
@@ -8,10 +11,21 @@ class Echo implements Command {
     return this.alias.includes(command);
   }
 
-  run(args: string[]): CommandOutput {
+  help(): CommandOutput {
     return {
       status: 0,
-      output: args.join(' '),
+      output: HELP,
+    };
+  }
+
+  run(args: string[]): CommandOutput {
+    const str = args
+      .join(' ')
+      .replace(/\\n/g, '\n');
+
+    return {
+      status: 0,
+      output: str,
     };
   }
 }

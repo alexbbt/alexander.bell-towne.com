@@ -10,7 +10,7 @@
         </router-link>
       </div>
     </div>
-    <TerminalInput />
+    <TerminalInput class="terminal-input" />
     <nav class="terminal-menu">
       <ul>
         <li
@@ -54,3 +54,14 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.terminal-input {
+  flex: 1;
+  display: flex;
+}
+
+.terminal-menu {
+  width: auto !important;
+}
+</style>

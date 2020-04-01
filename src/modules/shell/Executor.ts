@@ -70,6 +70,9 @@ class Executor {
     const match = path.find((c) => c.matches(command));
 
     if (match) {
+      if (args && args.includes('--help')) {
+        return match.help(args);
+      }
       return match.run(args);
     }
     if (command === '') {
@@ -82,7 +85,7 @@ class Executor {
 
     const output = new Help().run();
     output.status = 1;
-    output.output = `Command '${command}' not recognized\n${output.output}`;
+    output.output = `Command '${command}' not recognized\n\n${output.output}`;
 
     return output;
   }

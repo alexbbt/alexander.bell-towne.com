@@ -1,6 +1,13 @@
 /* eslint-disable class-methods-use-this */
 import marked from 'marked';
 
+const HELP = `Usage: md [strings ...]
+
+Aliases:
+- md
+- markdown
+`;
+
 class Cat implements Command {
   alias = [
     'md',
@@ -11,10 +18,21 @@ class Cat implements Command {
     return this.alias.includes(command);
   }
 
+  help(): CommandOutput {
+    return {
+      status: 0,
+      output: HELP,
+    };
+  }
+
   run(args: string[]): CommandOutput {
     if (args[0]) {
+      const str = args
+        .join(' ')
+        .replace(/\\n/g, '\n');
+
       return {
-        output: marked(args.join('\n')),
+        output: `RAW_HTML${marked(str)}`,
         status: 0,
       };
     }

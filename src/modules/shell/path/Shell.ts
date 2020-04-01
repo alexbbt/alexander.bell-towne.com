@@ -2,6 +2,14 @@
 import { OUTPUT } from './files/resume.sh';
 import { parseFileName } from './utils';
 
+const HELP = `Usage: sh [script-file]
+
+Aliases:
+- sh
+- bash
+- zsh
+`;
+
 class Cat implements Command {
   alias = [
     'sh',
@@ -11,6 +19,13 @@ class Cat implements Command {
 
   matches(command: string): boolean {
     return this.alias.includes(command);
+  }
+
+  help(): CommandOutput {
+    return {
+      status: 0,
+      output: HELP,
+    };
   }
 
   run(args: string[]): CommandOutput {

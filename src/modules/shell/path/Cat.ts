@@ -7,6 +7,8 @@ import METADATA from './files/metadata.md';
 import { SCRIPT } from './files/resume.sh';
 import { parseFileName } from './utils';
 
+const HELP = 'Usage: cat [file ...]';
+
 class Cat implements Command {
   alias = [
     'cat',
@@ -16,55 +18,61 @@ class Cat implements Command {
     return this.alias.includes(command);
   }
 
-  run(args: string[]): CommandOutput {
-    const parsedFile = parseFileName(args[0]);
-    switch (parsedFile) {
-      case 'face.png':
-        return {
-          status: 0,
-          output: FACE,
-        };
-      case 'experience.md':
-        return {
-          status: 0,
-          output: EXPERIENCE,
-        };
-      case 'education.md':
-        return {
-          status: 0,
-          output: EDUCATION,
-        };
-      case 'metadata.md':
-        return {
-          status: 0,
-          output: METADATA,
-        };
-      case 'resume.sh':
-        return {
-          status: 0,
-          output: SCRIPT,
-        };
-      case '':
-      case null:
-      case undefined:
-        return {
-          status: 1,
-          output: 'cat: must have an argument',
-        };
-      case '.':
-      case './':
-      case '..':
-      case '../':
-        return {
-          status: 1,
-          output: `cat: ${args[0]}: Is a directory`,
-        };
-      default:
-        return {
-          status: 1,
-          output: `cat: ${args[0]}: No such file or directory`,
-        };
+  help(): CommandOutput {
+    return {
+      status: 0,
+      output: HELP,
+    };
+  }
+
+  run(files: string[]): CommandOutput {
+    const filteredFiles = files.filter((f) => f);
+    if (filteredFiles.length === 0) {
+      return {
+        status: 1,
+        output: 'cat: must have an argument',
+      };
     }
+
+    const output: CommandOutput = {
+      status: 0,
+      output: '',
+    };
+
+    filteredFiles.forEach((file) => {
+      const parsedFile = parseFileName(file);
+      switch (parsedFile) {
+        case 'face.png':
+          output.output += FACE;
+          break;
+        case 'experience.md':
+          output.output += EXPERIENCE;
+          break;
+        case 'education.md':
+          output.output += EDUCATION;
+          break;
+        case 'metadata.md':
+          output.output += METADATA;
+          break;
+        case 'resume.sh':
+          output.output += SCRIPT;
+          break;
+        case '.':
+        case './':
+        case '..':
+        case '../':
+          output.output += `cat: ${file}: Is a directory`;
+          output.status = 1;
+          break;
+        default:
+          output.output += `cat: ${file}: No such file or directory`;
+          output.status = 1;
+          break;
+      }
+      output.output += '\n';
+    });
+
+    return output;
   }
 }
 
