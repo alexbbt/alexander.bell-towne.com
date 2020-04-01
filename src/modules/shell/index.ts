@@ -70,4 +70,5 @@ export default Shell;
  * ideas:
  * * pipe
  * * tabs
+ * * markdown
  */

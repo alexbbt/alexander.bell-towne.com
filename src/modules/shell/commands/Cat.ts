@@ -2,6 +2,10 @@
 import FACE from './files/face.png';
 import EXPERIENCE from './files/experience.md';
 import EDUCATION from './files/education.md';
+import METADATA from './files/metadata.md';
+
+import { SCRIPT } from './files/resume.sh';
+import { parseFileName } from './utils';
 
 class Cat implements Command {
   alias = [
@@ -13,7 +17,8 @@ class Cat implements Command {
   }
 
   run(args: string[]): CommandOutput {
-    switch (args[0]) {
+    const parsedFile = parseFileName(args[0]);
+    switch (parsedFile) {
       case 'face.png':
         return {
           status: 0,
@@ -28,6 +33,16 @@ class Cat implements Command {
         return {
           status: 0,
           output: EDUCATION,
+        };
+      case 'metadata.md':
+        return {
+          status: 0,
+          output: METADATA,
+        };
+      case 'resume.sh':
+        return {
+          status: 0,
+          output: SCRIPT,
         };
       case '':
       case null:

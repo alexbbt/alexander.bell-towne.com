@@ -11,7 +11,7 @@
       >
         <!-- <h2>Hello World</h2> -->
         <h2>My name is Alexander Bell-Towne.</h2>
-        <p>I work as a Software Engineer at Square, Inc.</p>
+        <p>I work as a Senior Software Engineer at Square, Inc.</p>
         <p>I have a B.S. in Informatics from the University of Washington.</p>
       </div>
     </div>

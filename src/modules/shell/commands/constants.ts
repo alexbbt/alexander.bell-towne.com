@@ -5,6 +5,7 @@ An interactive resume website.
 
 Commands:
   ls          list the files in the current directory
+  sh          execute a file
   cat         print out the contents of a file
   clear       clear the output screen
   echo        print out a message.
@@ -17,4 +18,6 @@ export const FILES = [
   'face.png',
   'experience.md',
   'education.md',
+  'metadata.md',
+  'resume.sh',
 ];
