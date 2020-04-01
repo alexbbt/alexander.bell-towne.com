@@ -12,44 +12,78 @@ class Executor {
     this.lastStatus = 0;
   }
 
-  execute(command: string, args: string[]): ShellAction {
-    if (command === 'clear') {
+  execute(commands: ShellCommand[]): ShellAction {
+    if (commands[0].command === 'clear') {
       this.output.clear();
       return {
         output: this.output.getOutput(),
       };
     }
 
-    if (command === 'home') {
+    // Clear keeps the same status.
+    this.lastStatus = 0;
+
+    if (commands[0].command === 'home') {
       return {
         output: this.output.getOutput(),
         route: 'home',
       };
     }
 
-    const action: ShellAction = {};
+    let lastOutput: CommandOutput = {
+      status: this.lastStatus,
+      output: '',
+    };
+
+    commands.forEach((command) => {
+      if (this.lastStatus > 0) {
+        return;
+      }
+
+      let { args } = command;
+
+      if (lastOutput.output) {
+        // eslint-disable-next-line no-param-reassign
+        args = args.concat(lastOutput.output);
+      }
+
+      lastOutput = this.executeSingleCommand({
+        ...command,
+        args,
+      });
+    });
+
+    this.output.add(lastOutput.output);
+
+    this.output.commands(commands, this.lastStatus);
+
+    return {
+      output: this.output.getOutput(),
+      route: lastOutput.route,
+    };
+  }
+
+  executeSingleCommand(shellCommand: ShellCommand): CommandOutput {
+    const { command, args } = shellCommand;
+
     const match = path.find((c) => c.matches(command));
 
     if (match) {
-      const { status, output, route } = match.run(args);
-
-      this.lastStatus = status;
-      this.output.add(output);
-
-      action.route = route;
-    } else if (command === '') {
+      return match.run(args);
+    }
+    if (command === '') {
       this.output.add('');
-    } else {
-      const { output } = new Help().run();
-      this.lastStatus = 1;
-      this.output.add(output);
-      this.output.add(`Command '${command}' not recognized`);
+      return {
+        output: '',
+        status: this.lastStatus,
+      };
     }
 
-    this.output.command(command, args, this.lastStatus);
+    const output = new Help().run();
+    output.status = 1;
+    output.output = `Command '${command}' not recognized\n${output.output}`;
 
-    action.output = this.output.getOutput();
-    return action;
+    return output;
   }
 }
 

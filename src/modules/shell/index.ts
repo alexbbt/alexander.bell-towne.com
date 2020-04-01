@@ -2,7 +2,7 @@
 import HistoryManager from './HistoryManager';
 import OutputManager from './OutputManager';
 import Executor from './Executor';
-import { parse } from './Parser';
+import { parseInputString } from './utils';
 
 class Shell {
   private history: HistoryManager;
@@ -48,9 +48,9 @@ class Shell {
   run(input: string): ShellAction {
     this.history.add(input);
 
-    const { command, args } = parse(input);
+    const commands = parseInputString(input);
 
-    const action = this.executor.execute(command, args);
+    const action = this.executor.execute(commands);
 
     if (action.input == null) {
       action.input = '';
@@ -68,7 +68,6 @@ export default Shell;
 
 /**
  * ideas:
- * * pipe
  * * tabs
  * * markdown
  */

@@ -5,7 +5,7 @@ class OutputManager {
     this.output = [];
   }
 
-  command(command: string, args: string[], code: number) {
+  commands(commands: ShellCommand[], code: number) {
     let prefix = '>';
 
     if (code > 0) {
@@ -14,7 +14,7 @@ class OutputManager {
       prefix = prefix.fontcolor('green');
     }
 
-    const line = [command, ...args].join(' ');
+    const line = commands.map((command) => [command.command, ...command.args].join(' ')).join(' | ');
     this.output.push(`${prefix} ${line}`);
   }
 

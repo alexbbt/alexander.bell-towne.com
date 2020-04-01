@@ -4,7 +4,7 @@ import Help from './Help';
 import List from './List';
 import Shell from './Shell';
 
-const Commands: Command[] = [
+const path: Command[] = [
   new Cat(),
   new Echo(),
   new Help(),
@@ -12,4 +12,4 @@ const Commands: Command[] = [
   new Shell(),
 ];
 
-export default Commands;
+export default path;
