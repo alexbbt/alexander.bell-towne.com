@@ -1,5 +1,5 @@
 <template>
-  <div class="terminal-logo">
+  <div class="hide-on-mobile terminal-logo">
     <div class="logo">
       <input
         ref="input"
@@ -69,6 +69,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (max-width: 600px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
 .input {
   border: none;
   font-size: var(--global-font-size);
