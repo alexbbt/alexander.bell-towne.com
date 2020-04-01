@@ -53,6 +53,7 @@ class Executor {
       });
     });
 
+    this.lastStatus = lastOutput.status;
     this.output.add(lastOutput.output);
 
     this.output.commands(commands, this.lastStatus);

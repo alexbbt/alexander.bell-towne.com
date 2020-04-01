@@ -69,5 +69,4 @@ export default Shell;
 /**
  * ideas:
  * * tabs
- * * markdown
  */

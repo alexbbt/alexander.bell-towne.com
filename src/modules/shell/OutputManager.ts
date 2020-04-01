@@ -21,8 +21,11 @@ class OutputManager {
   add(line: string) {
     let output = line;
 
-    output = output.split('\n').join('<br>');
-    output = output.split(' ').join('&nbsp;');
+    if (!output.includes('<')) {
+      // only if it is not already html.
+      output = output.split('\n').join('<br>');
+      output = output.split(' ').join('&nbsp;');
+    }
 
     this.output.push(output);
   }

@@ -5,9 +5,9 @@ import METADATA from './metadata.md';
 const HEADER = `
 # Alexander Bell-Towne
 
-  (509) 859-7437
-  alexander@bell-towne.com
-  New York, NY
+(509) 859-7437 | alexander@bell-towne.com | New York, NY
+
+---
 `;
 
 export const SCRIPT = `

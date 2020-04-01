@@ -5,6 +5,7 @@
         ref="input"
         :value="input"
         class="input"
+        :class="classes"
         autocomplete="false"
         spellcheck="false"
         @input="updateInput($event.target.value)"
@@ -24,6 +25,11 @@ export default {
     ...mapGetters({
       input: GET_INPUT,
     }),
+    classes() {
+      return {
+        'hide-cursor': this.input.length === 0,
+      };
+    },
   },
   mounted() {
     const { input } = this.$refs;
@@ -70,14 +76,16 @@ export default {
   margin: 0;
   font-family: var(--font-stack);
 
-  // Hack to hide cursor
-  color: transparent;
-  text-shadow: 0 0 0 var(--font-color);
-
   padding-left: 5px;
 
   &:focus {
     outline: none;
+  }
+
+  &.hide-cursor {
+    // Hack to hide cursor
+    color: transparent;
+    text-shadow: 0 0 0 var(--font-color);
   }
 }
 </style>

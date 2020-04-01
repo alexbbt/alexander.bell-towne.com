@@ -1,5 +1,5 @@
 <template>
-  <div class="terminal">
+  <div>
     <!-- eslint-disable vue/no-v-html -->
     <p
       v-for="(line, index) in output"
