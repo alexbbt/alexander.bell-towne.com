@@ -1,6 +1,6 @@
 import OutputManager from './OutputManager';
-import commands from './commands';
-import Help from './commands/Help';
+import path from './path';
+import Help from './path/Help';
 
 class Executor {
   private output: OutputManager;
@@ -28,7 +28,7 @@ class Executor {
     }
 
     const action: ShellAction = {};
-    const match = commands.find((c) => c.matches(command));
+    const match = path.find((c) => c.matches(command));
 
     if (match) {
       const { status, output, route } = match.run(args);
