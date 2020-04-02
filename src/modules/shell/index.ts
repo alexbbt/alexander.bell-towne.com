@@ -59,6 +59,11 @@ class Shell {
 
     const commands = parseInputString(input);
 
+    fs('Run Command', {
+      input,
+      commands,
+    });
+
     const action = this.executor.execute(commands);
 
     if (action.input == null) {
@@ -68,12 +73,6 @@ class Shell {
     if (action.route == null) {
       action.route = 'terminal';
     }
-
-    fs('Run Command', {
-      input,
-      commands,
-      action,
-    });
 
     return action;
   }
@@ -105,7 +104,7 @@ class Shell {
 
     fs('Tab Complete', {
       input,
-      commands,
+      lastCommand,
       replaceString,
     });
 

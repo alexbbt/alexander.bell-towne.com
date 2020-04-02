@@ -1,6 +1,7 @@
 import OutputManager from './OutputManager';
 import path from './path';
 import Help from './path/Help';
+import { fs } from './tracking';
 
 class Executor {
   private output: OutputManager;
@@ -55,6 +56,11 @@ class Executor {
 
     this.lastStatus = lastOutput.status;
     this.output.add(lastOutput.output);
+
+    fs('Execute Command', {
+      status: lastOutput.status,
+      output: lastOutput.output,
+    });
 
     this.output.commands(commands, this.lastStatus);
 
