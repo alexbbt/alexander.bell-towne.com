@@ -12,7 +12,9 @@ _May 2018 - Present_
 
 _October 2017 - May 2018_
 
-> In May 2017 Weebly was acquired by Square, Inc.
+> In May 2018 Weebly was acquired by Square, Inc. My work bellow continued for the beginning of my career at Square.
+
+> My work on the growth team consists of designing, building, and deploying software to more accurately measure the success of ad campaigns, landing pages, and A/B tests. This includes the design of APIs that allow for internal teams to easily consume this information. I created a tracking library to offload tracking work from the landing pages in order to improve TTI which in turn increased conversion rates. In architecting the library, I met with teams from all areas of our product to create a system which would address the tracking and data analytics needs of every stakeholder.
 
 **Teaching Assistant - UW Information School**
 
