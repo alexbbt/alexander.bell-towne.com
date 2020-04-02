@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import { OUTPUT } from './files/resume.sh';
-import { parseFileName } from './utils';
+import { parseFileName, fileBasedTabComplete } from './utils';
 
 const HELP = `Usage: sh [script-file]
 
@@ -26,6 +26,10 @@ class Cat implements Command {
       status: 0,
       output: HELP,
     };
+  }
+
+  tabComplete(args: string[]): TabComplete | null {
+    return fileBasedTabComplete(args);
   }
 
   run(args: string[]): CommandOutput {

@@ -18,6 +18,10 @@ class Echo implements Command {
     };
   }
 
+  tabComplete(): TabComplete | null {
+    return null;
+  }
+
   run(args: string[]): CommandOutput {
     const str = args
       .join(' ')

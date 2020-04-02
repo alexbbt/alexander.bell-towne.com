@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import { FILES } from './constants';
-import { parseFileName } from './utils';
+import { parseFileName, fileBasedTabComplete } from './utils';
 
 const HELP = `Usage: ls [folder]
 
@@ -24,6 +24,10 @@ class List implements Command {
       status: 0,
       output: HELP,
     };
+  }
+
+  tabComplete(args: string[]): TabComplete | null {
+    return fileBasedTabComplete(args);
   }
 
   run(args: string[]): CommandOutput {

@@ -3,6 +3,8 @@ import HistoryManager from './HistoryManager';
 import OutputManager from './OutputManager';
 import Executor from './Executor';
 import { parseInputString } from './utils';
+import path from './path';
+import { escapeRegExp } from './path/utils';
 
 class Shell {
   private history: HistoryManager;
@@ -42,6 +44,12 @@ class Shell {
       };
     }
 
+    if (key === 'Tab') {
+      return {
+        input: this.tabComplete(input),
+      };
+    }
+
     return {};
   }
 
@@ -61,6 +69,33 @@ class Shell {
     }
 
     return action;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  tabComplete(input: string): string {
+    const commands = parseInputString(input);
+
+    const lastCommand = commands.pop();
+    if (lastCommand == null) {
+      return input;
+    }
+
+    const match = path.find((c) => c.matches(lastCommand.command));
+
+    if (!match) {
+      return input;
+    }
+
+    const replace = match.tabComplete(lastCommand.args);
+
+    if (!replace) {
+      return input;
+    }
+
+    const escapedRegExp = escapeRegExp(replace.input);
+    const replaceRegex = new RegExp(`${escapedRegExp}$`);
+
+    return input.replace(replaceRegex, replace.output);
   }
 }
 

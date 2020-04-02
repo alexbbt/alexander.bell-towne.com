@@ -5,7 +5,7 @@ import EDUCATION from './files/education.md';
 import METADATA from './files/metadata.md';
 
 import { SCRIPT } from './files/resume.sh';
-import { parseFileName } from './utils';
+import { parseFileName, fileBasedTabComplete } from './utils';
 
 const HELP = 'Usage: cat [file ...]';
 
@@ -23,6 +23,10 @@ class Cat implements Command {
       status: 0,
       output: HELP,
     };
+  }
+
+  tabComplete(args: string[]): TabComplete | null {
+    return fileBasedTabComplete(args);
   }
 
   run(files: string[]): CommandOutput {

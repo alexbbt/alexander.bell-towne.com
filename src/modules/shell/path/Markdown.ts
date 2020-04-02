@@ -25,6 +25,10 @@ class Cat implements Command {
     };
   }
 
+  tabComplete(): TabComplete | null {
+    return null;
+  }
+
   run(args: string[]): CommandOutput {
     if (args[0]) {
       const str = args

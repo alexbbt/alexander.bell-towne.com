@@ -45,6 +45,10 @@ export default {
       if (event.target !== input) {
         input.focus();
       }
+
+      if (event.key === 'Tab') {
+        event.preventDefault();
+      }
     };
 
     window.addEventListener('keydown', this.listner);

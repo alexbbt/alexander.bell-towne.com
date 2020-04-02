@@ -14,6 +14,10 @@ class Help implements Command {
     return this.run();
   }
 
+  tabComplete(): TabComplete | null {
+    return null;
+  }
+
   run(): CommandOutput {
     return {
       status: 0,
