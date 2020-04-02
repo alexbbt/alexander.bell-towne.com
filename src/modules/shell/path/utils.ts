@@ -29,6 +29,35 @@ export function fileBasedTabComplete(args: string[]): TabComplete | null {
   };
 }
 
-export function escapeRegExp(string: string) {
+export function escapeRegExp(string: string): string {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+
+/**
+ * Print a given string to a file.
+ * Will open a new window.
+ */
+export function print(output: string): string {
+  const printWindow = window.open('', 'PRINT', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+
+  if (!printWindow) {
+    return 'There was an error printing your document';
+  }
+
+  printWindow.document.write('<html><head><title>Alexander Bell-Towne Resume</title>');
+  printWindow.document.write('</head><body>');
+  printWindow.document.write(output);
+  printWindow.document.write('</body></html>');
+
+  printWindow.document.close(); // necessary for IE >= 10
+  printWindow.focus(); // necessary for IE >= 10*/
+
+  printWindow.print();
+  if (window.innerWidth >= 576) {
+    window.setTimeout(() => {
+      printWindow.close();
+    }, 1000);
+  }
+
+  return 'Document Printed';
 }

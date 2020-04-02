@@ -100,9 +100,3 @@ class Shell {
 }
 
 export default Shell;
-
-/**
- * ideas:
- * * tabs
- * * print
- */

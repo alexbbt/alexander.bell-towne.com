@@ -1,17 +1,11 @@
 /* eslint-disable class-methods-use-this */
-import marked from 'marked';
+import { print } from './utils';
 
-const HELP = `Usage: md [strings ...]
-
-Aliases:
-- md
-- markdown
-`;
+const HELP = 'Usage: print [strings ...]';
 
 class Cat implements Command {
   alias = [
-    'md',
-    'markdown',
+    'print',
   ];
 
   matches(command: string): boolean {
@@ -32,17 +26,21 @@ class Cat implements Command {
   run(args: string[]): CommandOutput {
     if (!args[0]) {
       return {
-        output: 'Must provide markdown a string to render (try piping)',
+        output: 'Must provide print a string to render (try piping)',
         status: 1,
       };
     }
 
-    const str = args
+    let str = args
       .join(' ')
       .replace(/\\n/g, '\n');
 
+    if (str.startsWith('RAW_HTML')) {
+      str = str.substring('RAW_HTML'.length);
+    }
+
     return {
-      output: `RAW_HTML${marked(str)}`,
+      output: print(str),
       status: 0,
     };
   }
