@@ -36,7 +36,9 @@ export default {
     input.focus();
 
     this.listner = (event) => {
-      if (event.metaKey || event.ctrlKey) {
+      const isOnlyNormalKey = !(event.metaKey || event.ctrlKey);
+      const isPaste = (event.metaKey || event.ctrlKey) && (event.key === 'v');
+      if (!isOnlyNormalKey && !isPaste) {
         return;
       }
 
