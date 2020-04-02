@@ -5,6 +5,7 @@ import Executor from './Executor';
 import { parseInputString } from './utils';
 import path from './path';
 import { escapeRegExp } from './path/utils';
+import { fs } from './tracking';
 
 class Shell {
   private history: HistoryManager;
@@ -68,6 +69,12 @@ class Shell {
       action.route = 'terminal';
     }
 
+    fs('Run Command', {
+      input,
+      commands,
+      action,
+    });
+
     return action;
   }
 
@@ -94,8 +101,15 @@ class Shell {
 
     const escapedRegExp = escapeRegExp(replace.input);
     const replaceRegex = new RegExp(`${escapedRegExp}$`);
+    const replaceString = input.replace(replaceRegex, replace.output);
 
-    return input.replace(replaceRegex, replace.output);
+    fs('Tab Complete', {
+      input,
+      commands,
+      replaceString,
+    });
+
+    return replaceString;
   }
 }
 
