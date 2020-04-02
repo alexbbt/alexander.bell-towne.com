@@ -9,6 +9,7 @@ Commands:
   home        return to the home screen.
   ls          list the files in the current directory.
   md          render the input as markdown.
+  print       send the input to your printer.
   sh          execute a file.
 
   help        print this message.
