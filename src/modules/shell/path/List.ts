@@ -38,6 +38,10 @@ class List implements Command {
 
     let errorOutput = '';
 
+    if (files.length === 0) {
+      files.push('');
+    }
+
     files.forEach((file) => {
       const parsedFile = parseFileName(file);
 
