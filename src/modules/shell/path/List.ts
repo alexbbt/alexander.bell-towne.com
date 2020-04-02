@@ -31,14 +31,6 @@ class List implements Command {
   }
 
   run(files: string[]): CommandOutput {
-    const filteredFiles = files.filter((f) => f);
-    if (filteredFiles.length === 0) {
-      return {
-        status: 1,
-        output: 'cat: must have an argument',
-      };
-    }
-
     const output: CommandOutput = {
       status: 0,
       output: '',
@@ -46,7 +38,7 @@ class List implements Command {
 
     let errorOutput = '';
 
-    filteredFiles.forEach((file) => {
+    files.forEach((file) => {
       const parsedFile = parseFileName(file);
 
       switch (parsedFile) {
@@ -55,7 +47,7 @@ class List implements Command {
         case './':
         case null:
         case undefined:
-          if (filteredFiles.length > 1) {
+          if (files.length > 1) {
             output.output += `\n${file}:\n`;
           }
           output.output += FILES.map((f) => `  ${f}`).join('\n');
