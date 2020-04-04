@@ -1,14 +1,12 @@
 import Stream from './Stream';
+import { CURSOR_HOME } from './constants';
 
 class OutputManager {
-  private output: OutputSet[];
-
   private queue: OutputSet;
 
   private stdout: Stream
 
   constructor(stdout: Stream) {
-    this.output = [];
     this.queue = {
       commandLine: '',
       output: [],
@@ -49,20 +47,17 @@ class OutputManager {
   }
 
   write() {
-    this.output.push(this.queue);
+    this.stdout.write(this.queue);
     this.queue = {
       commandLine: '',
       output: [],
     };
-    this.stdout.write(this.output);
-  }
-
-  getOutput(): OutputSet[] {
-    return this.output.slice().reverse();
   }
 
   clear() {
-    this.output = [];
+    this.stdout.write({
+      commandLine: CURSOR_HOME,
+    });
   }
 }
 

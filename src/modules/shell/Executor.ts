@@ -16,9 +16,7 @@ class Executor {
   execute(commands: ShellCommand[]): ShellAction {
     if (commands[0].command === 'clear') {
       this.output.clear();
-      return {
-        output: this.output.getOutput(),
-      };
+      return {};
     }
 
     // Clear keeps the same status.
@@ -26,7 +24,6 @@ class Executor {
 
     if (commands[0].command === 'home') {
       return {
-        output: this.output.getOutput(),
         route: 'home',
       };
     }
@@ -67,7 +64,6 @@ class Executor {
     this.output.write();
 
     return {
-      output: this.output.getOutput(),
       route: lastOutput.route,
     };
   }

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import { CURSOR_HOME } from '@/modules/shell/constants';
 import Shell from '../modules/shell';
 import {
   GET_OUTPUT,
@@ -40,11 +41,8 @@ const store = new Vuex.Store({
       commit(SET_INPUT, input);
     },
     [SHELL_KEYUP]({ commit, state }, key) {
-      const { output, input, route } = shell.keyup(key, state.input);
-      console.log(output);
-      if (output != null) {
-        commit(SET_OUTPUT, output);
-      }
+      const { input, route } = shell.stdin(key, state.input);
+
       if (input != null) {
         commit(SET_INPUT, input);
       }
@@ -53,12 +51,14 @@ const store = new Vuex.Store({
   },
 });
 
-// shell.Stdout.read((line: string) => {
-//   let output: string[] = store.getters[GET_OUTPUT]();
+shell.stdout.read((line: OutputSet) => {
+  const output: OutputSet[] = store.getters[GET_OUTPUT];
 
-//   output = [line, ...output];
-
-//   store.commit(SET_OUTPUT, output);
-// });
+  if (line.commandLine === CURSOR_HOME) {
+    store.commit(SET_OUTPUT, []);
+  } else {
+    store.commit(SET_OUTPUT, [line, ...output]);
+  }
+});
 
 export default store;

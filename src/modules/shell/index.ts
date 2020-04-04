@@ -9,6 +9,8 @@ import { fs } from './tracking';
 import Stream from './Stream';
 
 class Shell {
+  stdout: Stream;
+
   private history: HistoryManager;
 
   private output: OutputManager;
@@ -17,7 +19,8 @@ class Shell {
 
   constructor() {
     this.history = new HistoryManager();
-    this.output = new OutputManager(new Stream());
+    this.stdout = new Stream();
+    this.output = new OutputManager(this.stdout);
     this.executor = new Executor(this.output);
   }
 
@@ -29,7 +32,7 @@ class Shell {
     return this.history.next(input);
   }
 
-  keyup(key: string, input: string): ShellAction {
+  stdin(key: string, input: string): ShellAction {
     if (key === 'Enter') {
       return this.run(input);
     }
