@@ -6,6 +6,7 @@ import { parseInputString } from './utils';
 import path from './path';
 import { escapeRegExp } from './path/utils';
 import { fs } from './tracking';
+import Stream from './Stream';
 
 class Shell {
   private history: HistoryManager;
@@ -16,7 +17,7 @@ class Shell {
 
   constructor() {
     this.history = new HistoryManager();
-    this.output = new OutputManager();
+    this.output = new OutputManager(new Stream());
     this.executor = new Executor(this.output);
   }
 

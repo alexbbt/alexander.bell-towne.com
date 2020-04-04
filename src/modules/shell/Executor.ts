@@ -64,6 +64,8 @@ class Executor {
 
     this.output.commands(commands, this.lastStatus);
 
+    this.output.write();
+
     return {
       output: this.output.getOutput(),
       route: lastOutput.route,

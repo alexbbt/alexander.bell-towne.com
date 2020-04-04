@@ -2,20 +2,19 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import Shell from '../modules/shell';
+import {
+  GET_OUTPUT,
+  GET_INPUT,
+  SET_OUTPUT,
+  SET_INPUT,
+  SHELL_KEYUP,
+} from './constants';
 
 Vue.use(Vuex);
 
 const shell = new Shell();
 
-export const SHELL_KEYUP = 'SHELL_KEYUP';
-
-export const GET_OUTPUT = 'GET_OUTPUT';
-export const SET_OUTPUT = 'SET_OUTPUT';
-
-export const GET_INPUT = 'GET_INPUT';
-export const SET_INPUT = 'SET_INPUT';
-
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     output: [],
     input: '',
@@ -42,6 +41,7 @@ export default new Vuex.Store({
     },
     [SHELL_KEYUP]({ commit, state }, key) {
       const { output, input, route } = shell.keyup(key, state.input);
+      console.log(output);
       if (output != null) {
         commit(SET_OUTPUT, output);
       }
@@ -52,3 +52,13 @@ export default new Vuex.Store({
     },
   },
 });
+
+// shell.Stdout.read((line: string) => {
+//   let output: string[] = store.getters[GET_OUTPUT]();
+
+//   output = [line, ...output];
+
+//   store.commit(SET_OUTPUT, output);
+// });
+
+export default store;

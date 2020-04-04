@@ -1,8 +1,19 @@
-class OutputManager {
-  private output: string[];
+import Stream from './Stream';
 
-  constructor() {
+class OutputManager {
+  private output: OutputSet[];
+
+  private queue: OutputSet;
+
+  private stdout: Stream
+
+  constructor(stdout: Stream) {
     this.output = [];
+    this.queue = {
+      commandLine: '',
+      output: [],
+    };
+    this.stdout = stdout;
   }
 
   commands(commands: ShellCommand[], code: number) {
@@ -15,7 +26,7 @@ class OutputManager {
     }
 
     const line = commands.map((command) => [command.command, ...command.args].join(' ')).join(' | ');
-    this.output.push(`${prefix} ${line}`);
+    this.queue.commandLine = `${prefix} ${line}`;
   }
 
   add(line: string) {
@@ -34,10 +45,19 @@ class OutputManager {
         .replace(/ /g, '&nbsp;');
     }
 
-    this.output.push(output);
+    this.queue.output.push(output);
   }
 
-  getOutput(): string[] {
+  write() {
+    this.output.push(this.queue);
+    this.queue = {
+      commandLine: '',
+      output: [],
+    };
+    this.stdout.write(this.output);
+  }
+
+  getOutput(): OutputSet[] {
     return this.output.slice().reverse();
   }
 

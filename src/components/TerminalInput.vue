@@ -17,7 +17,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import { SHELL_KEYUP, GET_INPUT, SET_INPUT } from '../store/index';
+import { SHELL_KEYUP, GET_INPUT, SET_INPUT } from '../store/constants';
 
 export default {
   name: 'TerminalInput',

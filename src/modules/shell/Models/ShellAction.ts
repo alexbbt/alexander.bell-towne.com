@@ -1,5 +1,5 @@
 interface ShellAction {
-  output?: string[] | null;
+  output?: OutputSet[] | null;
   input?: string | null;
   route?: string | null;
 }
