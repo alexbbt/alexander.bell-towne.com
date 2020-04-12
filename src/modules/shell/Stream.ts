@@ -2,8 +2,8 @@ function safeCall(listener: Function, ...args: unknown[]) {
   try {
     listener(...args);
   } catch (error) {
-    console.error('Error calling function');
-    console.error(error);
+    // console.error('Error calling function');
+    // console.error(error);
   }
 }
 

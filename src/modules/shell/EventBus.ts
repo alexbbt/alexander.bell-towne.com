@@ -3,8 +3,8 @@ function callListeners(listeners: Function[], ...args: any[]) {
     try {
       listener(...args);
     } catch (error) {
-      console.error('Error calling listener');
-      console.error(error);
+      // console.error('Error calling listener');
+      // console.error(error);
     }
   });
 }
