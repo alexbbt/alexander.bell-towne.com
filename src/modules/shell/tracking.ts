@@ -5,7 +5,7 @@ declare global {
 }
 
 export function fs(eventName: string, props: Record<string, unknown>) {
-  if (window.FS) {
+  if (window.FS && window.FS.event) {
     const eventData: Record<string, string> = {};
     Object.entries(props).forEach(([key, value]) => {
       eventData[key] = JSON.stringify(value);
