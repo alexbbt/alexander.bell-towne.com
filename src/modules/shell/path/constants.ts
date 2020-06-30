@@ -1,4 +1,4 @@
-export const HELP = `Usage: www.bell-towne.com [command] [options]
+export const HELP = `Usage: bell-towne.com [command] [options]
 
 An interactive resume website.
 

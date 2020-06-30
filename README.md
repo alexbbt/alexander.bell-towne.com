@@ -1,4 +1,4 @@
-# www.bell-towne.com
+# bell-towne.com
 
 ## Project setup
 ```
