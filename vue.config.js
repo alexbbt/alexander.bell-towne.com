@@ -2,9 +2,7 @@
 const path = require('path');
 const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
-const publicPath = process.env.NODE_ENV === 'production'
-  ? '/www.bell-towne.com/'
-  : '/';
+const publicPath = '/';
 
 module.exports = {
   publicPath,
