@@ -20,7 +20,7 @@ import 'terminal.css';
 const TITLE = 'Alexander Bell-Towne';
 const DESCRIPTION = 'I work as a Senior Software Engineer at Square, Inc.';
 const URL = 'https://bell-towne.com';
-const IMAGE = myFace;
+const IMAGE = URL + myFace;
 
 export default {
   name: 'App',
