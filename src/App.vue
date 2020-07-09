@@ -12,7 +12,7 @@
 <script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-import myFace from './assets/my-face.jpg';
+import myFace from './assets/my-face-social.jpg';
 
 import 'flexboxgrid';
 import 'terminal.css';
