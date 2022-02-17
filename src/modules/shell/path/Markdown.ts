@@ -8,7 +8,7 @@ Aliases:
 - markdown
 `;
 
-class Cat implements Command {
+class Markdown implements Command {
   alias = [
     'md',
     'markdown',
@@ -48,4 +48,4 @@ class Cat implements Command {
   }
 }
 
-export default Cat;
+export default Markdown;

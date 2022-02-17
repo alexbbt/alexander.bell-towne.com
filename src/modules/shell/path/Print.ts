@@ -3,7 +3,7 @@ import { print } from './utils';
 
 const HELP = 'Usage: print [strings ...]';
 
-class Cat implements Command {
+class Print implements Command {
   alias = [
     'print',
   ];
@@ -46,4 +46,4 @@ class Cat implements Command {
   }
 }
 
-export default Cat;
+export default Print;

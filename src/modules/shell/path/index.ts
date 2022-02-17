@@ -5,6 +5,7 @@ import List from './List';
 import Markdown from './Markdown';
 import Print from './Print';
 import Shell from './Shell';
+import Wedding from './Wedding';
 
 const path: Command[] = [
   new Cat(),
@@ -14,6 +15,7 @@ const path: Command[] = [
   new Markdown(),
   new Print(),
   new Shell(),
+  new Wedding(),
 ];
 
 export default path;

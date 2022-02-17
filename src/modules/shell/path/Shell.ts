@@ -10,7 +10,7 @@ Aliases:
 - zsh
 `;
 
-class Cat implements Command {
+class Shell implements Command {
   alias = [
     'sh',
     'bash',
@@ -64,4 +64,4 @@ class Cat implements Command {
   }
 }
 
-export default Cat;
+export default Shell;
