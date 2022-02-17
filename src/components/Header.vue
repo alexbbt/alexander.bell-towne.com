@@ -6,7 +6,7 @@
           to="/"
           class="no-style"
         >
-          bell-towne.com
+          alexander.bell-towne.com
         </router-link>
       </div>
     </div>

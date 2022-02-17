@@ -19,7 +19,7 @@ import 'terminal.css';
 
 const TITLE = 'Alexander Bell-Towne';
 const DESCRIPTION = 'I work as a Senior Software Engineer at Square, Inc.';
-const URL = 'https://bell-towne.com';
+const URL = 'https://alexander.bell-towne.com';
 const IMAGE = URL + myFace;
 
 export default {
@@ -35,7 +35,7 @@ export default {
 
       // OpenGraph data (Most widely used)
       { property: 'og:title', content: TITLE },
-      { property: 'og:site_name', content: 'bell-towne.com' },
+      { property: 'og:site_name', content: 'alexander.bell-towne.com' },
       // The list of types is available here: http://ogp.me/#types
       { property: 'og:type', content: 'website' },
       // Should the the same as your canonical link, see below.
