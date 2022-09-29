@@ -2,37 +2,34 @@
 export default `
 ## Experience
 
-**Senior Software Engineer - Square, Inc.**
+**Block/Square — Senior Software Engineer - Tech Lead**
 
-_May 2018 - Present_
+_December 2019 - Present_
 
-> I work on the Square Online Checkout team (SOC), helping sellers quickly enable online sales.
+* Headed a team of 9 engineers expanding  Online Checkout for Square (squareup.com/online-checkout) from a new project concept in 2019 to a mature product with an annualized GPV of $1.5 Billion in 2022
+* Coordinated with EM and PM to create roadmaps and long-term project plans
+* Directed daily team sync meetings to help unblock any team issues
 
-**Software Engineer - Weebly, Inc.**
+**Square/Weebly — Software Engineer - Growth**
 
-_October 2017 - May 2018_
+_October 2017 - December 2019,  (Intern: June 2016 - September 2016)_
 
-> In May 2018 Weebly was acquired by Square, Inc. My work bellow continued for the beginning of my career at Square.
+* Designed, built, and deployed software to maximize the accuracy of tracking for ad campaigns, landing pages, and A/B tests
+* Developed APIs allowing internal teams to easily consume and analyze the tracking data obtained
+* Created a tracking library to decrease load time on the landing pages, improving TTI and increasing conversion rates. Coordinated with teams throughout Square to ensure the tracking library would address the needs of every stakeholder
 
-> My work on the growth team consists of designing, building, and deploying software to more accurately measure the success of ad campaigns, landing pages, and A/B tests. This includes the design of APIs that allow for internal teams to easily consume this information. I created a tracking library to offload tracking work from the landing pages in order to improve TTI which in turn increased conversion rates. In architecting the library, I met with teams from all areas of our product to create a system which would address the tracking and data analytics needs of every stakeholder.
-
-**Teaching Assistant - UW Information School**
-
-_September 2016 - June 2017_
-
-> As a teaching assistant for both the Server Side and Client Side Web Dev courses I ran mini-lectures and study groups to ensure every student was able to improve their own software engineering ability in a fun and engaging environment. I taught a range of tools including React JS, Golang,  and NodeJS and instructed the students in utilizing these tools to complete several projects throughout the quarter.
-
-**Director of IT - IUGA**
+**UW Information School, Seattle — Teaching Assistant**
 
 _September 2016 - June 2017_
 
-> As Director of IT for the Informatics Undergraduate Association (IUGA), I redesigned the IUGA website. The website featured a new officer election page that shuffled the order of the  candidates  upon each viewing, giving everyone the same chance to be at the top of the list. I also developed a build and release system for the website which is still used today.
+* Assisted Jason Nutter and Dr. David Stearns with the Client-Side Server-Side and Web Development classes respectively
+* Instructed mini-lectures within the lecture on topics that I had advanced knowledge on including Git and Encryption. Led study groups to ensure every student was able to improve their own software engineering ability in a fun and engaging environment
+* Taught a range of tools including  React JS, Golang, and NodeJS, and instructed the students in utilizing these tools to complete several projects throughout the quarter
 
-**Software Engineer Intern - Weebly**
+**IUGA, iuga.info/elections — Director of IT**
 
-_June 2016 - September 2016_
+_September 2016 - June 2017_
 
-> I worked on the Billing Team to create and maintain the checkout system at Weebly. We build elegant yet simple checkout flows for new Weebly products and services. We ensured translation and currency conversion worked seamlessly from initial pageview through purchasing a Weebly service.
-
+* Initiated and led IUGA study halls in which 1st year Info students could work with and learn from 2nd year Info students
 ---
 `;
