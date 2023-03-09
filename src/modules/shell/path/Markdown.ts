@@ -42,7 +42,7 @@ class Markdown implements Command {
       .replace(/\\n/g, '\n');
 
     return {
-      output: `RAW_HTML${marked(str)}`,
+      output: `RAW_HTML${marked.parse(str)}`,
       status: 0,
     };
   }
