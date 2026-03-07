@@ -9,10 +9,9 @@
       <div
         class="col-xs-12 col-sm-8"
       >
-        <!-- <h2>Hello World</h2> -->
         <h2>Hello World!</h2>
         <p>My name is Alexander Bell-Towne.</p>
-        <p>I work as a Senior Software Engineer at Block, Inc. (Formerly Square).</p>
+        <p>I work as a Senior Software Engineer and Technical Lead at Block, Inc. (formerly Square).</p>
         <p>I have a B.S. in Informatics from the University of Washington.</p>
         <p>If you would like my resume, do as Stephen R. Bourne would do.</p>
       </div>

@@ -5,7 +5,9 @@ import METADATA from './metadata.md';
 const HEADER = `
 # Alexander Bell-Towne
 
-(509) 859-7437 | alexander@bell-towne.com | Seattle, WA
+Seattle, WA • (509) 859-7437 • alexander@bell-towne.com • github.com/alexbbt
+
+_Senior Software Engineer and Technical Lead with 8+ years building large-scale commerce and payments platforms at Block, specializing in distributed systems and high-volume transaction infrastructure._
 
 ---
 `;

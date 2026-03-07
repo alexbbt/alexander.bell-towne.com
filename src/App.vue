@@ -18,7 +18,7 @@ import 'flexboxgrid';
 import 'terminal.css';
 
 const TITLE = 'Alexander Bell-Towne';
-const DESCRIPTION = 'I work as a Senior Software Engineer at Square, Inc.';
+const DESCRIPTION = 'Senior Software Engineer and Technical Lead at Block (formerly Square). 8+ years building commerce and payments platforms.';
 const URL = 'https://alexander.bell-towne.com';
 const IMAGE = URL + myFace;
 

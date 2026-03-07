@@ -6,7 +6,9 @@ export default `
 
 _September 2013 - June 2017_
 
-> My area of study focused on Web Development and Data Science. I worked on many individual and team projects where we built full web applications
+* Focus: Web Development & Data Science
+* Teaching Assistant — Client-Side, Server-Side, Web Development
+* Director of IT — Informatics Undergraduate Association
 
 ---
 `;

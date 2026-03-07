@@ -1,53 +1,35 @@
 
 export default `
-## Languages
+## Technical Skills
 
-- Golang
-- Javascript/NodeJS
-- PHP
-- Java
-- C#
-- SQL
-- HTML
-- CSS
-- SCSS
-- Bash/Shell Scripting
-- Python
+**Languages**
 
----
+- Go, JavaScript (Node.js), Kotlin, Python, SQL
 
-## Skills
+**Frontend**
 
-- Full Stack Web Development
-- Kubernetes and Docker cluster deployment
-- SAS Architecture Design and Implementation
-- Javascript Module Design and Distribution
-- Mobile First Web Design
-- Webpack
-- Git Version Control
-- Open Source Projects
-- Automated Testing
+- React, Vue.js
+
+**Infrastructure & Cloud**
+
+- Kubernetes, Docker, Terraform, AWS, Cloudflare
+
+**Distributed Systems & Architecture**
+
+- Microservices, REST APIs, CDN/Edge Delivery
+
+**AI & Platform Engineering**
+
+- AI-Driven Application Platforms, LLM-Integrated Application Design
+
+**Observability**
+
+- Datadog, Sentry
 
 ---
 
 ## Awards
 
-> The Eisenberg Award (Informatics) “For your passion for Informatics, dedication to improving the student experience, and the exceptional impact you have made on the community.” bit.ly/2017-info-grad
+> The Eisenberg Award — University of Washington Informatics. Recognized for exceptional leadership and impact within the program.
 
----
-
-## Services
-
-- Google Analytics
-- Google Tag Manager
-- Facebook Analytics
-- Amplitude
-- Digitalocean
-- Docker
-- Kubernetes
-- AWS
-- Azure
-- Jenkins
-- Github
-- NPM
 `;
