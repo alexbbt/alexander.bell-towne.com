@@ -1,13 +1,14 @@
+import { NAME, CONTACT_LINE, TAGLINE } from '@/content/me';
 import EXPERIENCE from './experience.md';
 import EDUCATION from './education.md';
 import METADATA from './metadata.md';
 
 const HEADER = `
-# Alexander Bell-Towne
+# ${NAME}
 
-Seattle, WA • (509) 859-7437 • alexander@bell-towne.com • github.com/alexbbt
+${CONTACT_LINE}
 
-_Senior Software Engineer and Technical Lead with 8+ years building large-scale commerce and payments platforms at Block, specializing in distributed systems and high-volume transaction infrastructure._
+_${TAGLINE}_
 
 ---
 `;

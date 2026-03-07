@@ -17,6 +17,7 @@ class HistoryManager {
 
   add(string: string) {
     this.index = -1;
+    this.originalInput = null;
     this.history.unshift(string);
   }
 

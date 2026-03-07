@@ -1,3 +1,4 @@
+import { RESUME_WINDOW_TITLE } from '@/content/me';
 import { FILES } from './constants';
 
 export function parseFileName(file: string | null | undefined): string | null | undefined {
@@ -44,7 +45,8 @@ export function print(output: string): string {
     return 'There was an error printing your document';
   }
 
-  printWindow.document.write('<html><head><title>Alexander Bell-Towne Resume</title>');
+  printWindow.document.write(`<html><head><title>${RESUME_WINDOW_TITLE}</title>`);
+  printWindow.document.write('<style>body{font-family:Georgia,serif;font-size:12pt;line-height:1.4;max-width:700px;margin:0.75in auto;padding:0;color:#111;} a{color:#111;}</style>');
   printWindow.document.write('</head><body>');
   printWindow.document.write(output);
   printWindow.document.write('</body></html>');

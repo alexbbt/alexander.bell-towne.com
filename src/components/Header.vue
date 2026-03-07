@@ -21,6 +21,7 @@
             class="menu-item"
             :href="link.href"
             target="_blank"
+            rel="noopener noreferrer"
           >
             {{ link.name }}
           </a>

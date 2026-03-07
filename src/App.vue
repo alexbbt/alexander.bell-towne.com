@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { NAME, META_DESCRIPTION } from '@/content/me';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import myFace from './assets/my-face-social.jpg';
@@ -17,8 +18,6 @@ import myFace from './assets/my-face-social.jpg';
 import 'flexboxgrid';
 import 'terminal.css';
 
-const TITLE = 'Alexander Bell-Towne';
-const DESCRIPTION = 'Senior Software Engineer and Technical Lead at Block (formerly Square). 8+ years building commerce and payments platforms.';
 const URL = 'https://alexander.bell-towne.com';
 const IMAGE = URL + myFace;
 
@@ -29,12 +28,12 @@ export default {
     Footer,
   },
   head: {
-    title: TITLE,
+    title: NAME,
     meta: [
-      { name: 'description', content: DESCRIPTION },
+      { name: 'description', content: META_DESCRIPTION },
 
       // OpenGraph data (Most widely used)
-      { property: 'og:title', content: TITLE },
+      { property: 'og:title', content: NAME },
       { property: 'og:site_name', content: 'alexander.bell-towne.com' },
       // The list of types is available here: http://ogp.me/#types
       { property: 'og:type', content: 'website' },
@@ -42,20 +41,20 @@ export default {
       { property: 'og:url', content: URL },
       { property: 'og:image', content: IMAGE },
       // Often the same as your meta description, but not always.
-      { property: 'og:description', content: DESCRIPTION },
+      { property: 'og:description', content: META_DESCRIPTION },
 
       // Twitter card
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: URL },
-      { name: 'twitter:title', content: TITLE },
-      { name: 'twitter:description', content: DESCRIPTION },
+      { name: 'twitter:title', content: NAME },
+      { name: 'twitter:description', content: META_DESCRIPTION },
       // Your twitter handle, if you have one.
       { name: 'twitter:creator', content: '@alexbbt' },
       { name: 'twitter:image:src', content: IMAGE },
 
       // Google / Schema.org markup:
-      { itemprop: 'name', content: TITLE },
-      { itemprop: 'description', content: DESCRIPTION },
+      { itemprop: 'name', content: NAME },
+      { itemprop: 'description', content: META_DESCRIPTION },
       { itemprop: 'image', content: IMAGE },
     ],
     link: [
