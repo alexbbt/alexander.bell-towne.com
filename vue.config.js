@@ -16,7 +16,20 @@ if (process.env.PRERENDER === 'true') {
 
 module.exports = {
   publicPath,
+  css: {
+    loaderOptions: {
+      scss: {
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api'],
+        },
+      },
+    },
+  },
   configureWebpack: {
     plugins,
+    performance: {
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000,
+    },
   },
 };
