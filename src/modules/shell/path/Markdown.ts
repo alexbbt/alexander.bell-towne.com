@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
-import marked from 'marked';
+// marked v4 uses named exports; types still declare default
+import { parse as markedParse } from 'marked';
 
 const HELP = `Usage: md [strings ...]
 
@@ -42,7 +43,7 @@ class Markdown implements Command {
       .replace(/\\n/g, '\n');
 
     return {
-      output: `RAW_HTML${marked.parse(str)}`,
+      output: `RAW_HTML${markedParse(str)}`,
       status: 0,
     };
   }
