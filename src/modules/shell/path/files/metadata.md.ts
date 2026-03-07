@@ -1,4 +1,3 @@
-
 export default `
 ## Technical Skills
 
@@ -33,3 +32,4 @@ export default `
 > The Eisenberg Award — University of Washington Informatics. Recognized for exceptional leadership and impact within the program.
 
 `;
+

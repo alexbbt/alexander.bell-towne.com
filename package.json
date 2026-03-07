@@ -2,6 +2,10 @@
   "name": "alexander.bell-towne.com",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -12,7 +16,7 @@
     "flexboxgrid": "^6.3.1",
     "marked": "^4.2.12",
     "terminal.css": "^0.7.1",
-    "vue": "^3.0.0",
+    "vue": "^2.6.14",
     "vue-meta": "^2.4.0",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"
@@ -25,17 +29,17 @@
     "@vue/cli-plugin-eslint": "^5.0.8",
     "@vue/cli-plugin-router": "~5.0.9",
     "@vue/cli-plugin-typescript": "^5.0.8",
-    "@vue/cli-plugin-vuex": "~4.2.0",
+    "@vue/cli-plugin-vuex": "~5.0.9",
     "@vue/cli-service": "~5.0.8",
     "@vue/eslint-config-airbnb": "^5.3.0",
     "@vue/eslint-config-typescript": "^5.1.0",
-    "eslint": "^9.33.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-vue": "^10.4.0",
+    "eslint-plugin-vue": "^8.7.1",
     "prerender-spa-plugin": "^3.4.0",
     "sass": "^1.49.7",
     "sass-loader": "^8.0.2",
-    "typescript": "~3.7.5",
-    "vue-template-compiler": "^2.6.11"
+    "typescript": "~4.9.5",
+    "vue-template-compiler": "^2.6.14"
   }
 }

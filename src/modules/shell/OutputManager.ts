@@ -4,7 +4,7 @@ import { CURSOR_HOME } from './constants';
 class OutputManager {
   private queue: OutputSet;
 
-  private stdout: Stream
+  private stdout: Stream;
 
   constructor(stdout: Stream) {
     this.queue = {

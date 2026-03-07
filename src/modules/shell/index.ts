@@ -1,4 +1,3 @@
-
 import HistoryManager from './HistoryManager';
 import OutputManager from './OutputManager';
 import Executor from './Executor';
